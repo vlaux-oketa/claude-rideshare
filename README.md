@@ -19,18 +19,14 @@
     git clone https://github.com/yourusername/RideShare.git
     cd RideShare
     ```
- 2. Install dependencies:
+ 2. Install dependencies (includes Firebase SDK):
     ```bash
     npm install
     ```
- 3. Install the Firebase SDK:
+ 3. Copy `.env.example` to `.env` and update with your Firebase project credentials (see docs/firebase-setup.md).
+ 4. Start the development server:
     ```bash
-    npm install firebase
-    ```
- 4. Copy `.env.example` to `.env` and update with your Firebase project credentials (see docs/firebase-setup.md).
- 5. Start the development server:
-    ```bash
-    npm start
+    npm run dev
     ```
 
  ## Repository Structure
