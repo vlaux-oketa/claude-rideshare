@@ -23,8 +23,12 @@
     ```bash
     npm install
     ```
- 3. Create a Firebase project and add your configuration to a `.env` file (see docs/firebase-setup.md).
- 4. Start the development server:
+ 3. Install the Firebase SDK:
+    ```bash
+    npm install firebase
+    ```
+ 4. Copy `.env.example` to `.env` and update with your Firebase project credentials (see docs/firebase-setup.md).
+ 5. Start the development server:
     ```bash
     npm start
     ```
