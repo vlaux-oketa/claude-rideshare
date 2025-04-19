@@ -1,30 +1,31 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Signup from './pages/Signup'
-import Login from './pages/Login'
-import ForgotPassword from './pages/ForgotPassword'
-import Dashboard from './pages/Dashboard'
-import PrivateRoute from './components/PrivateRoute'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './pages/Dashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import Profile from './pages/Profile';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
+<Route path="/forgot-password" element={<ForgotPassword />} />
+<Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+  path="/"
+  element={
+    <PrivateRoute>
+      <Dashboard />
+    </PrivateRoute>
+  }
+/>
       </Routes>
-    </div>
-  )
+    </Router>
+  );
 }
 
 export default App

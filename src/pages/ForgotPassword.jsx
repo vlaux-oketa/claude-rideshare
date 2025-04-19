@@ -27,8 +27,8 @@ export default function ForgotPassword() {
   return (
     <div>
       <h2>Password Reset</h2>
-      {error && <p>{error}</p>}
-      {message && <p>{message}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {message && <p style={{ color: 'green' }}>{message}</p>}
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input type="email" ref={emailRef} required />
@@ -36,10 +36,10 @@ export default function ForgotPassword() {
           Reset Password
         </button>
       </form>
-      <div>
-        <Link to="/login">Login</Link>
+      <div style={{ marginTop: '1em' }}>
+        <Link to="/login">Log In</Link>
       </div>
-      <div>
+      <div style={{ marginTop: '1em' }}>
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
     </div>
