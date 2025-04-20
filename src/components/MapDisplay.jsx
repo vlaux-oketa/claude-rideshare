@@ -69,7 +69,7 @@ function MapDisplay() {
                   }
                 });
               } else {
-                console.error("Could not find address input element with ID 'address-input'");
+                console.log("Address input 'address-input' not found on this page.");
               }
             },
             (error) => {

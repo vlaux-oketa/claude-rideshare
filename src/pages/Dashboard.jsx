@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import MapDisplay from '../components/MapDisplay';
 import RideRequestForm from '../components/RideRequestForm';
-import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
+import { collection, query, where, orderBy, onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 
 export default function Dashboard() {
@@ -15,6 +15,25 @@ export default function Dashboard() {
   // State for rides
   const [rides, setRides] = useState([]);
   const [loadingRides, setLoadingRides] = useState(true);
+
+  async function handleCancelRide(rideId) {
+    // Optional: Confirm before deleting
+    if (!window.confirm("Are you sure you want to cancel this ride request?")) {
+      return;
+    }
+
+    console.log("Attempting to cancel ride:", rideId);
+    const rideDocRef = doc(db, 'rides', rideId); // Create document reference
+
+    try {
+      await deleteDoc(rideDocRef); // Delete the document
+      console.log("Ride cancelled successfully:", rideId);
+      alert("Ride request cancelled."); // Simple feedback
+    } catch (error) {
+      console.error("Error cancelling ride:", error);
+      alert("Failed to cancel ride. Please try again."); // Error feedback
+    }
+  }
 
   useEffect(() => {
     // Make sure currentUser is loaded before querying
@@ -98,6 +117,14 @@ export default function Dashboard() {
                 <strong>Status:</strong> {ride.status || 'N/A'} <br />
                 {ride.createdAt?.seconds && (
                   <small>Requested: {new Date(ride.createdAt.seconds * 1000).toLocaleString()}</small>
+                )}
+                {ride.status === 'requested' && (
+                  <button
+                    onClick={() => handleCancelRide(ride.id)}
+                    style={{ marginLeft: '10px', padding: '2px 5px', cursor: 'pointer' }}
+                  >
+                    Cancel Ride
+                  </button>
                 )}
               </li>
             ))}

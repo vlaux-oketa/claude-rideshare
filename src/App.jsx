@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
+import DriverDashboard from './pages/DriverDashboard';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
     </PrivateRoute>
   }
 />
+        <Route path="/driver" element={<PrivateRoute><DriverDashboard /></PrivateRoute>} />
       </Routes>
     </Router>
   );
