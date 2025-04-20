@@ -7,6 +7,7 @@ import MapDisplay from '../components/MapDisplay';
 import RideRequestForm from '../components/RideRequestForm';
 import { collection, query, where, orderBy, onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
+import NotificationList from '../components/NotificationList';
 
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();
@@ -84,6 +85,9 @@ export default function Dashboard() {
       <h2>Dashboard</h2>
       <p>Welcome, {currentUser && currentUser.email}</p>
       <p><Link to="/profile">Edit Profile</Link></p>
+
+      {/* Add Notifications Here */}
+      <NotificationList />
       {/* Add input field above the map */}
       <div style={{ marginBottom: '10px' }}>
         <input

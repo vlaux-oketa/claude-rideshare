@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, orderBy, onSnapshot, doc, updateDoc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, query, where, orderBy, onSnapshot, doc, updateDoc, setDoc, getDoc, serverTimestamp, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useAuth } from '../contexts/AuthContext';
 import MapDisplay from '../components/MapDisplay';
@@ -115,7 +115,7 @@ function DriverDashboard() {
     };
   }, [isOnline, currentUser]);
 
-  async function handleAcceptRide(rideId) {
+  async function handleAcceptRide(rideId, riderId) { // Added riderId parameter
     if (!currentUser) {
       console.error("No driver logged in.");
       alert("Error: You must be logged in.");
@@ -129,6 +129,29 @@ function DriverDashboard() {
         driverId: currentUser.uid
       });
       console.log("Ride accepted successfully:", rideId);
+
+      // --- Create notification for the rider ---
+      if (riderId) { // Make sure riderId was passed correctly
+          const notificationsCollectionRef = collection(db, 'notifications');
+          const newNotification = {
+            userId: riderId, // Notify the RIDER
+            message: `Your ride (ID starting ${rideId.substring(0,5)}...) has been accepted!`, // Simpler message
+            timestamp: serverTimestamp(),
+            isRead: false,
+            type: 'ride_accepted',
+            relatedRideId: rideId
+          };
+          try {
+             await addDoc(notificationsCollectionRef, newNotification);
+             console.log("Notification created for rider:", riderId);
+          } catch (notifError) {
+             console.error("Error creating notification:", notifError);
+          }
+      } else {
+           console.error("Cannot create notification, riderId is missing.");
+      }
+      // --- End notification creation ---
+
       alert("Ride accepted!");
     } catch (error) {
       console.error("Error accepting ride:", error);
@@ -200,7 +223,7 @@ function DriverDashboard() {
                    <small>Requested: {new Date(ride.createdAt.seconds * 1000).toLocaleString()}</small>
                 )}
                 <div style={{ marginTop: '10px' }}>
-                  <button onClick={() => handleAcceptRide(ride.id)}>Accept</button>
+                  <button onClick={() => handleAcceptRide(ride.id, ride.riderId)}>Accept</button>
                   <button disabled style={{ marginLeft: '10px' }}>Reject</button>
                 </div>
               </li>
