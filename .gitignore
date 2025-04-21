@@ -31,3 +31,7 @@
  .pnp/
  .pnp.js
 node_modules
+
+# ignore accidental sub-repos
+UnterRideshare/
+claude-task-master/
