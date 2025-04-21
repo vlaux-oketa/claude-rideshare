@@ -11,6 +11,11 @@ import DriverDashboard from './pages/DriverDashboard';
 function App() {
   return (
     <div className="container">
+      {/* Header with version label */}
+      <header className="flex justify-between items-center py-2">
+        <h1 className="text-xl font-bold">RideShare</h1>
+        <span className="text-xs text-gray-500">v{__APP_VERSION__}</span>
+      </header>
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
@@ -26,6 +31,8 @@ function App() {
             }
           />
           <Route path="/driver" element={<PrivateRoute><DriverDashboard /></PrivateRoute>} />
+          {/* Alias /rider to Dashboard */}
+          <Route path="/rider" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         </Routes>
       </Router>
     </div>
