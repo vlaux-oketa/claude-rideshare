@@ -125,9 +125,9 @@ export default function Dashboard() {
                 {ride.status === 'requested' && (
                   <button
                     onClick={() => handleCancelRide(ride.id)}
-                    style={{ marginLeft: '10px', padding: '2px 5px', cursor: 'pointer' }}
+                    disabled={!navigator.onLine}
                   >
-                    Cancel Ride
+                    Cancel
                   </button>
                 )}
               </li>

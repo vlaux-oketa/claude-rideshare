@@ -10,23 +10,25 @@ import DriverDashboard from './pages/DriverDashboard';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-<Route path="/forgot-password" element={<ForgotPassword />} />
-<Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route
-  path="/"
-  element={
-    <PrivateRoute>
-      <Dashboard />
-    </PrivateRoute>
-  }
-/>
-        <Route path="/driver" element={<PrivateRoute><DriverDashboard /></PrivateRoute>} />
-      </Routes>
-    </Router>
+    <div className="container">
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/driver" element={<PrivateRoute><DriverDashboard /></PrivateRoute>} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

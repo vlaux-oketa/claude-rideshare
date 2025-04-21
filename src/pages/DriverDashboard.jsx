@@ -223,8 +223,12 @@ function DriverDashboard() {
                    <small>Requested: {new Date(ride.createdAt.seconds * 1000).toLocaleString()}</small>
                 )}
                 <div style={{ marginTop: '10px' }}>
-                  <button onClick={() => handleAcceptRide(ride.id, ride.riderId)}>Accept</button>
-                  <button disabled style={{ marginLeft: '10px' }}>Reject</button>
+                  <button onClick={() => handleAcceptRide(ride.id, ride.riderId)} disabled={!isOnline}>
+                    Accept
+                  </button>
+                  <button disabled style={{ marginLeft: '10px' }}>
+                    Reject
+                  </button>
                 </div>
               </li>
             ))}
