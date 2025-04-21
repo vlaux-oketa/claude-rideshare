@@ -35,3 +35,6 @@ node_modules
 # ignore accidental sub-repos
 UnterRideshare/
 claude-task-master/
+
+# Firebase build cache
+.firebase/
