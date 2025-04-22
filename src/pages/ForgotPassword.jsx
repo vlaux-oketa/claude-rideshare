@@ -32,7 +32,7 @@ export default function ForgotPassword() {
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input type="email" ref={emailRef} required />
-        <button disabled={loading} type="submit">
+        <button disabled={loading || !navigator.onLine} type="submit">
           Reset Password
         </button>
       </form>

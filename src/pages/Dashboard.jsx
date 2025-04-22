@@ -123,9 +123,8 @@ export default function Dashboard() {
                   <small>Requested: {new Date(ride.createdAt.seconds * 1000).toLocaleString()}</small>
                 )}
                 {ride.status === 'requested' && (
-                  <button
+                  <button disabled={loadingRides || !navigator.onLine}
                     onClick={() => handleCancelRide(ride.id)}
-                    disabled={!navigator.onLine}
                   >
                     Cancel
                   </button>

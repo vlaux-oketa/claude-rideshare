@@ -196,7 +196,7 @@ function DriverDashboard() {
       {/* Driver Status Toggle Section */}
       <div style={{ padding: '10px', border: '1px solid #eee', marginBottom: '20px', background: isOnline ? '#e8f5e9' : '#ffebee' }}>
         <p>Your Status: <strong>{statusLoading ? 'Loading...' : (isOnline ? 'Online (Available for rides)' : 'Offline')}</strong></p>
-        <button onClick={handleToggleOnlineStatus} disabled={statusLoading}>
+        <button disabled={loading || !navigator.onLine || !isOnline || statusLoading} onClick={handleToggleOnlineStatus}>
           {statusLoading ? 'Updating...' : (isOnline ? 'Go Offline' : 'Go Online')}
         </button>
       </div>
@@ -223,7 +223,7 @@ function DriverDashboard() {
                    <small>Requested: {new Date(ride.createdAt.seconds * 1000).toLocaleString()}</small>
                 )}
                 <div style={{ marginTop: '10px' }}>
-                  <button onClick={() => handleAcceptRide(ride.id, ride.riderId)} disabled={!isOnline}>
+                  <button disabled={loading || !navigator.onLine || !isOnline || statusLoading} onClick={() => handleAcceptRide(ride.id, ride.riderId)}>
                     Accept
                   </button>
                   <button disabled style={{ marginLeft: '10px' }}>

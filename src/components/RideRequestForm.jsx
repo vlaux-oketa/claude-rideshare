@@ -73,7 +73,7 @@ function RideRequestForm() {
         </div>
         <p>Ride Type: Standard (only)</p>
         <p>Estimated Fare: TBD</p>
-        <button type="submit" disabled={loading}>
+        <button disabled={loading || !navigator.onLine} type="submit">
           {loading ? 'Requesting...' : 'Request Ride'}
         </button>
       </form>

@@ -7,14 +7,15 @@ import Dashboard from './pages/Dashboard';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
 import DriverDashboard from './pages/DriverDashboard';
+import { APP_VERSION } from './version';
 
 function App() {
   return (
-    <div className="container">
+    <div className="container mx-auto px-4 max-w-screen-lg">
       {/* Header with version label */}
       <header className="flex justify-between items-center py-2">
         <h1 className="text-xl font-bold">RideShare</h1>
-        <span className="text-xs text-gray-500">v{__APP_VERSION__}</span>
+        <span className="text-xs text-gray-500">v{APP_VERSION}</span>
       </header>
       <Router>
         <Routes>

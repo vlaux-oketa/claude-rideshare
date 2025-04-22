@@ -37,7 +37,7 @@ function LoginPage() {
           <label>Password</label>
           <input type="password" ref={passwordRef} required />
         </div>
-        <button type="submit" disabled={loading}>Log In</button>
+        <button disabled={loading || !navigator.onLine} type="submit">Log In</button>
       </form>
       <div style={{ marginTop: '1em' }}>
         <Link to="/forgot-password">Forgot Password?</Link>

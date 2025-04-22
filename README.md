@@ -50,3 +50,49 @@
  ## License
 
  This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.# trigger deploy
+
+## 🚧 Local Development
+- Run locally: `npm install && npm run dev`
+- Playwright tests: `npx playwright test`
+
+## 🛠️ CI/CD Workflow
+- Playwright CI on every push/PR
+- Auto-deploy on merge to main via GitHub Actions
+
+## 🚧 Local Development
+- Run locally: `npm install && npm run dev`
+- Playwright tests: `npx playwright test`
+
+## 🛠️ CI/CD Workflow
+- Playwright CI on every push/PR
+- Auto-deploy on merge to main via GitHub Actions
+
+## 🚧 Local Development
+- Run locally: `npm install && npm run dev`
+- Playwright tests: `npx playwright test`
+
+## 🛠️ CI/CD Workflow
+- Playwright CI on every push/PR
+- Auto-deploy on merge to main via GitHub Actions
+
+## 🚧 Local Development
+- Run locally: `npm install && npm run dev`
+- Playwright tests: `npx playwright test`
+
+## 🛠️ CI/CD Workflow
+- Playwright CI on every push/PR
+- Auto-deploy on merge to main via GitHub Actions
+
+## 🔐 Security Notes
+- Firestore rules tightened (see firestore.rules).
+
+## 🚧 UX Notes
+- Buttons now have loading states (manually integrate per-component).
+- Added PostRideThankYou.jsx placeholder (complete manually).
+
+## 🔐 Security Notes
+- Firestore rules tightened (see firestore.rules).
+
+## 🚧 UX Notes
+- Buttons now have loading states (manually integrate per-component).
+- Added PostRideThankYou.jsx placeholder (complete manually).

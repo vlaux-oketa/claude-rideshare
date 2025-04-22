@@ -46,7 +46,7 @@ function SignUpPage() {
           <label>Confirm Password</label>
           <input type="password" ref={passwordConfirmRef} required />
         </div>
-        <button type="submit" disabled={loading}>Sign Up</button>
+        <button disabled={loading || !navigator.onLine} type="submit">Sign Up</button>
       </form>
       <p>
         Already have an account? <Link to="/login">Log In</Link>
